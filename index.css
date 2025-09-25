@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  background: #fff5f5; /* very light red background */
+}
+
+/* Splash Screen */
+#splash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #991b1b, #dc2626, #f87171); /* same red shade scale as sidebar/home */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeOut 3s forwards;
+}
+
+.splash-content {
+  text-align: center;
+  color: white;
+  animation: popIn 1.5s ease;
+  
+}
+
+.drop {
+  font-size: 60px;
+  animation: bounce 1.5s infinite;
+  display: inline-block;
+}
+
+#splash h1 {
+  font-size: 22px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration-color: rgb(231, 234, 237);
+}
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #991b1b, #dc2626, #f87171); 
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
+  padding: 20px;
+  position: fixed;
+  left: 0; top: 0;
+}
+
+.sidebar .logo {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(6px);
+}
+
+/* Content */
+.content {
+  margin-left: 240px;
+  padding: 20px;
+  flex: 1;
+  animation: fadeIn 1.5s ease;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #b91c1c; /* dark red */
+}
+
+/* Blood Group Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: linear-gradient(135deg, #fecaca, #fca5a5, #ef4444); 
+  padding: 25px;
+  text-align: center;
+  border-radius: 14px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #7f1d1d;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card span {
+  font-size: 14px;
+  color: #333;
+}
+
+.card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #fef2f2, #fca5a5);
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 200px;
+  font-size: 16px;
+  color: #7f1d1d;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Animations */
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  80% {opacity: 1;}
+  100% {opacity: 0; visibility: hidden;}
+}
+
+@keyframes popIn {
+  0% {transform: scale(0.7); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+@keyframes bounce {
+  0%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-12px);}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

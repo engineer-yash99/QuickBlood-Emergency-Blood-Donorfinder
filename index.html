@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Bank Dashboard</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div id="splash">
+    <div class="splash-content">
+      <div class="drop">🩸</div>
+      <h1>Quick, Top Donation</h1>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">🩸 Blood Bank</h2>
+    <ul>
+      <li><a href="#home">🏠 Home</a></li>
+      <li><a href="request.html">📝 Request Blood</a></li>
+      <li><a href="finddonor.html">🔍 Find Donor</a></li>
+      <li><a href="./patient.html">👤 Patient</a></li>
+       <li><a href="learn.html">📖 Learn More</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content" id="home">
+    <h1>Dashboard</h1>
+
+    <div class="grid">
+      <div class="card">A+<br><span>960ml</span></div>
+      <div class="card">O+<br><span>920ml</span></div>
+      <div class="card">B+<br><span>950ml</span></div>
+      <div class="card">AB+<br><span>525ml</span></div>
+      <div class="card">A-<br><span>2560ml</span></div>
+      <div class="card">O-<br><span>920ml</span></div>
+      <div class="card">B-<br><span>960ml</span></div>
+      <div class="card">AB-<br><span>1110ml</span></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">👥 Available Donors: <b>5</b></div>
+      <div class="stat-card">📩 Total Requests: <b>9</b></div>
+      <div class="stat-card">✅ Approved Requests: <b>6</b></div>
+    </div>
+  </main>
+
+  <script src="./index.js"></script>
+</body>
+</html>

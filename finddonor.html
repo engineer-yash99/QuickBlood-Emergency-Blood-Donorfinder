@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Donors - Quick Blood Donation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-red-600 text-white p-4 shadow-md flex justify-between items-center">
+    <h1 class="text-xl font-bold">🩸 Quick Blood Donation</h1>
+    <nav>
+      <a href="index.html" class="px-3 hover:underline">Home</a>
+      <a href="#" class="px-3 hover:underline font-semibold">Find Donors</a>
+      <a href="request.html" class="px-3 hover:underline">Request Blood</a>
+      <a href="" class="px-3 hover:underline">Profile</a>
+    </nav>
+  </header>
+
+  <!-- Search Bar -->
+  <section class="p-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">🔍 Search Donors</h2>
+      <input 
+        id="searchInput"
+        type="text" 
+        placeholder="Search by blood group, name, or city..." 
+        class="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-red-500"
+        onkeyup="searchDonors()"
+      >
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="p-6 bg-gray-200">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800 text-center">🏥 Nearby Hospitals</h2>
+      <iframe 
+        class="w-full h-96 rounded-xl shadow"
+        src="https://maps.app.goo.gl/ua5Xd64jJf7yPYyW9" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Donor List -->
+  <section class="p-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800 text-center">🧑‍🤝‍🧑 Available Donors</h2>
+      <ul id="donorList" class="space-y-4">
+        <li class="p-4 bg-white rounded-xl shadow flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Ravi Kumar</p>
+            <p class="text-sm text-gray-600">Blood Group: <span class="font-semibold">O+</span></p>
+            <p class="text-sm text-gray-600">City: Delhi</p>
+          </div>
+          <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Contact</button>
+        </li>
+        <li class="p-4 bg-white rounded-xl shadow flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Sneha Patel</p>
+            <p class="text-sm text-gray-600">Blood Group: <span class="font-semibold">A-</span></p>
+            <p class="text-sm text-gray-600">City: Mumbai</p>
+          </div>
+          <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Contact</button>
+        </li>
+        <li class="p-4 bg-white rounded-xl shadow flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Arjun Singh</p>
+            <p class="text-sm text-gray-600">Blood Group: <span class="font-semibold">B+</span></p>
+            <p class="text-sm text-gray-600">City: Bangalore</p>
+          </div>
+          <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Contact</button>
+        </li>
+        <li class="p-4 bg-white rounded-xl shadow flex justify-between items-center">
+          <div>
+            <p class="font-bold text-lg">Priya Sharma</p>
+            <p class="text-sm text-gray-600">Blood Group: <span class="font-semibold">AB+</span></p>
+            <p class="text-sm text-gray-600">City: Hyderabad</p>
+          </div>
+          <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Contact</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-6">
+    <p>&copy; 2025 Quick Blood Donation | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function searchDonors() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const donors = document.querySelectorAll('#donorList li');
+
+      donors.forEach(donor => {
+        const text = donor.innerText.toLowerCase();
+        donor.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>

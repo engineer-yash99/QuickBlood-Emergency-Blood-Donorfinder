@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Blood Donation - Learn More</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            transition: width 0.8s ease-in-out;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-50 to-pink-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">❤</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">BloodConnect</h1>
+                </div>
+                <button onclick="scrollToSection('donate')" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-semibold transition-colors pulse-animation">
+                    Donate Now
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-5xl font-bold text-gray-800 mb-6">Save Lives with Quick Blood Donation</h2>
+            <p class="text-xl text-gray-600 mb-8 leading-relaxed">Every 2 seconds, someone needs blood. Your donation can save up to 3 lives and takes just 10-15 minutes of your time.</p>
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-red-600 mb-2">4.5M</div>
+                        <div class="text-gray-600">Lives saved annually</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-red-600 mb-2">10-15</div>
+                        <div class="text-gray-600">Minutes to donate</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-red-600 mb-2">56</div>
+                        <div class="text-gray-600">Days between donations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Process Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-4xl font-bold text-center text-gray-800 mb-12">The Quick Donation Process</h3>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="process-step bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl card-hover cursor-pointer" onclick="showStepDetails(1)">
+                    <div class="text-3xl mb-4">📋</div>
+                    <h4 class="font-semibold text-lg mb-2">1. Registration</h4>
+                    <p class="text-gray-600 text-sm">Quick health screening and registration</p>
+                    <div class="mt-4 text-red-600 font-semibold">2-3 minutes</div>
+                </div>
+                <div class="process-step bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl card-hover cursor-pointer" onclick="showStepDetails(2)">
+                    <div class="text-3xl mb-4">🩺</div>
+                    <h4 class="font-semibold text-lg mb-2">2. Health Check</h4>
+                    <p class="text-gray-600 text-sm">Blood pressure, temperature, and hemoglobin test</p>
+                    <div class="mt-4 text-blue-600 font-semibold">3-5 minutes</div>
+                </div>
+                <div class="process-step bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl card-hover cursor-pointer" onclick="showStepDetails(3)">
+                    <div class="text-3xl mb-4">🩸</div>
+                    <h4 class="font-semibold text-lg mb-2">3. Donation</h4>
+                    <p class="text-gray-600 text-sm">Comfortable donation in a relaxing environment</p>
+                    <div class="mt-4 text-green-600 font-semibold">8-10 minutes</div>
+                </div>
+                <div class="process-step bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl card-hover cursor-pointer" onclick="showStepDetails(4)">
+                    <div class="text-3xl mb-4">🍪</div>
+                    <h4 class="font-semibold text-lg mb-2">4. Recovery</h4>
+                    <p class="text-gray-600 text-sm">Refreshments and rest before you go</p>
+                    <div class="mt-4 text-purple-600 font-semibold">10-15 minutes</div>
+                </div>
+            </div>
+            
+            <!-- Step Details Modal -->
+            <div id="stepModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div class="bg-white rounded-2xl p-8 max-w-md w-full">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 id="modalTitle" class="text-2xl font-bold"></h4>
+                        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                    </div>
+                    <div id="modalContent" class="text-gray-600 leading-relaxed"></div>
+                    <button onclick="closeModal()" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full w-full font-semibold transition-colors">
+                        Got it!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Checker -->
+    <section class="py-16 px-4 bg-gradient-to-r from-red-600 to-pink-600">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-4xl font-bold text-center text-white mb-12">Check Your Eligibility</h3>
+            <div class="bg-white rounded-2xl p-8 shadow-xl">
+                <div class="space-y-6">
+                    <div class="eligibility-question">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="eligibility-check w-5 h-5 text-red-600 rounded" onchange="updateEligibility()">
+                            <span class="text-lg">I am between 17-65 years old</span>
+                        </label>
+                    </div>
+                    <div class="eligibility-question">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="eligibility-check w-5 h-5 text-red-600 rounded" onchange="updateEligibility()">
+                            <span class="text-lg">I weigh at least 110 pounds (50 kg)</span>
+                        </label>
+                    </div>
+                    <div class="eligibility-question">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="eligibility-check w-5 h-5 text-red-600 rounded" onchange="updateEligibility()">
+                            <span class="text-lg">I am in good health today</span>
+                        </label>
+                    </div>
+                    <div class="eligibility-question">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="checkbox" class="eligibility-check w-5 h-5 text-red-600 rounded" onchange="updateEligibility()">
+                            <span class="text-lg">It's been at least 56 days since my last donation</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <div class="bg-gray-200 rounded-full h-4 mb-4">
+                        <div id="eligibilityProgress" class="bg-red-600 h-4 rounded-full progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div id="eligibilityResult" class="text-center text-lg font-semibold text-gray-600">
+                        Complete the checklist to see your eligibility
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-4xl font-bold text-center text-gray-800 mb-12">Frequently Asked Questions</h3>
+            <div class="space-y-4">
+                <div class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 font-semibold text-lg hover:bg-gray-100 transition-colors" onclick="toggleFAQ(1)">
+                        <div class="flex justify-between items-center">
+                            <span>Does blood donation hurt?</span>
+                            <span id="faq-icon-1" class="text-2xl">+</span>
+                        </div>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 pb-6 text-gray-600">
+                        Most donors report feeling only a brief pinch when the needle is inserted. The actual donation is painless, and many donors read, use their phones, or chat with staff during the process.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 font-semibold text-lg hover:bg-gray-100 transition-colors" onclick="toggleFAQ(2)">
+                        <div class="flex justify-between items-center">
+                            <span>How long does it take to recover?</span>
+                            <span id="faq-icon-2" class="text-2xl">+</span>
+                        </div>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 pb-6 text-gray-600">
+                        Your body replaces the donated blood volume within 24-48 hours. Red blood cells are fully replenished in 4-6 weeks. Most people feel completely normal within a few hours.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+                    <button class="w-full text-left p-6 font-semibold text-lg hover:bg-gray-100 transition-colors" onclick="toggleFAQ(3)">
+                        <div class="flex justify-between items-center">
+                            <span>What should I do before donating?</span>
+                            <span id="faq-icon-3" class="text-2xl">+</span>
+                        </div>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 pb-6 text-gray-600">
+                        Eat a healthy meal, drink plenty of water, get a good night's sleep, and bring a valid ID. Avoid alcohol for 24 hours before donation and don't donate on an empty stomach.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="donate" class="py-16 px-4 bg-gradient-to-r from-red-600 to-pink-600">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-4xl font-bold text-white mb-6">Ready to Save Lives?</h3>
+            <p class="text-xl text-red-100 mb-8">Find a donation center near you and schedule your appointment today.</p>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-xl max-w-md mx-auto">
+                <h4 class="text-2xl font-bold text-gray-800 mb-6">Find Donation Centers</h4>
+                <div class="space-y-4">
+                    <input type="text" placeholder="Enter your ZIP code" class="w-full p-4 border border-gray-300 rounded-lg text-lg">
+                    <button onclick="findCenters()" class="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded-lg font-semibold text-lg transition-colors">
+                        Find Centers Near Me
+                    </button>
+                </div>
+                
+                <div id="centerResults" class="hidden mt-6 space-y-3">
+                    <div class="text-left p-4 bg-gray-50 rounded-lg">
+                        <div class="font-semibold">City Blood Center</div>
+                        <div class="text-gray-600 text-sm">0.8 miles away • Open until 6 PM</div>
+                        <button class="mt-2 text-red-600 font-semibold">Schedule Appointment</button>
+                    </div>
+                    <div class="text-left p-4 bg-gray-50 rounded-lg">
+                        <div class="font-semibold">Community Health Clinic</div>
+                        <div class="text-gray-600 text-sm">1.2 miles away • Open until 8 PM</div>
+                        <button class="mt-2 text-red-600 font-semibold">Schedule Appointment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">❤</span>
+                        </div>
+                        <h4 class="text-xl font-bold">BloodConnect</h4>
+                    </div>
+                    <p class="text-gray-400">Connecting donors with those in need, saving lives one donation at a time.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Donation Centers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Eligibility Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Health & Safety</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Emergency Contact</h5>
+                    <p class="text-gray-400 mb-2">24/7 Blood Emergency Hotline</p>
+                    <p class="text-xl font-bold text-red-400">1-800-GIVE-BLOOD</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 BloodConnect. Saving lives through voluntary blood donation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Step details modal
+        const stepDetails = {
+            1: {
+                title: "Registration Process",
+                content: "You'll fill out a brief health questionnaire and provide identification. Our friendly staff will review your information and answer any questions you might have about the donation process."
+            },
+            2: {
+                title: "Health Screening",
+                content: "A trained professional will check your blood pressure, pulse, temperature, and hemoglobin levels. This ensures you're healthy enough to donate and that your donation will be safe for recipients."
+            },
+            3: {
+                title: "Blood Donation",
+                content: "You'll be seated in a comfortable chair while approximately one pint of blood is collected. You can relax, read, listen to music, or chat with our staff during this time."
+            },
+            4: {
+                title: "Recovery & Refreshments",
+                content: "After donation, you'll rest for 10-15 minutes while enjoying complimentary snacks and drinks. This helps your body adjust and ensures you feel well before leaving."
+            }
+        };
+
+        function showStepDetails(step) {
+            const modal = document.getElementById('stepModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            title.textContent = stepDetails[step].title;
+            content.textContent = stepDetails[step].content;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('stepModal').classList.add('hidden');
+        }
+
+        // Eligibility checker
+        function updateEligibility() {
+            const checkboxes = document.querySelectorAll('.eligibility-check');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const progress = (checkedCount / checkboxes.length) * 100;
+            
+            document.getElementById('eligibilityProgress').style.width = progress + '%';
+            
+            const resultDiv = document.getElementById('eligibilityResult');
+            if (checkedCount === checkboxes.length) {
+                resultDiv.innerHTML = '<span class="text-green-600">✅ You appear eligible to donate! Schedule your appointment today.</span>';
+            } else if (checkedCount > 0) {
+                resultDiv.innerHTML = '<span class="text-yellow-600">⚠ Please complete all requirements to check eligibility.</span>';
+            } else {
+                resultDiv.innerHTML = '<span class="text-gray-600">Complete the checklist to see your eligibility</span>';
+            }
+        }
+
+        // FAQ toggle
+        function toggleFAQ(faqNumber) {
+            const content = document.getElementById(faq-content-{faqNumber});
+            const icon = document.getElementById(faq-icon-{faqNumber});
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        // Find centers function
+        function findCenters() {
+            const zipInput = document.querySelector('input[placeholder="Enter your ZIP code"]');
+            const results = document.getElementById('centerResults');
+            
+            if (zipInput.value.trim()) {
+                results.classList.remove('hidden');
+                // Simulate loading animation
+                setTimeout(() => {
+                    results.style.opacity = '1';
+                }, 300);
+            } else {
+                alert('Please enter your ZIP code to find donation centers near you.');
+            }
+        }
+
+        // Add fade-in animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.card-hover, .process-step');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('fade-in');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Close modal when clicking outside
+        document.getElementById('stepModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ac5bf1e1a64850',t:'MTc1NzE0NDg1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
